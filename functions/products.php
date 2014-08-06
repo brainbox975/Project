@@ -8,7 +8,7 @@ function products_get_all_count() {
         LEFT JOIN products_images ON products.id = products_images.products_id
         GROUP BY products.id
     ';
-    $results = db_select($sql);
+    $result = db_select($sql);
 
     return $result;
 }

@@ -5,6 +5,8 @@ require_once('include/bootstrap.php');
 $Products = new Products($db_connection);
 $result = $Products->getAll();
 
+
+
 if (isset($_GET['action'])) {
 
 	switch ($_GET['action']) {

@@ -1,20 +1,21 @@
 <?php
 require_once('include/bootstrap.php');
+
 $news = news_get($_GET['id']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	if (isset($_GET['action']) && $_GET['action'] == 'delete') {
-		unlink('storage/'.$news['image']);
-		
-		$news['image'] = '';
-	}
-	if ($_FILES['image']['tmp_name'] != '') {
 
-		$filename = rand(1, 10000).$_FILES['image']['name'];
-		move_uploaded_file($_FILES['image']['tmp_name'], 'storage/'.$filename);
-		$news['image'] = $filename;
+        if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+            unlink('storage/news/'.$news['image']);
 
+            $news['image'] = '';
+        }
+        if ($_FILES['image']['tmp_name'] != '') {
+
+            $filename = rand(1, 10000).$_FILES['image']['name'];
+            move_uploaded_file($_FILES['image']['tmp_name'], 'storage/news/'.$filename);
+            $news['image'] = $filename;
 	}
 	$news = array(
 		'title' => $_POST['title'],
@@ -23,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	);
 	db_update('news', $news, $_GET['id']);
 
-	redirect('news_edit.php');
+	redirect('news_admin.php');
 }
 
 	
@@ -45,7 +46,7 @@ require_once('include/header.php');
 		</label>
 		<br>
 		<?php if ($news['image'] != '' && $_GET['action'] != 'delete') { ?>
-		<img src="storage/<?php echo $news['image']?>" width="100"><a href="news_edit.php?id=<?=$news['id'] ?>&action=delete" style="position: absolute;">[X]</a>
+		<img src="storage/news/<?php echo $news['image']?>" width="100"><a href="news_edit.php?id=<?=$news['id'] ?>&action=delete" style="position: absolute;">[X]</a>
 		<br>
 		<?php } ?>
 		<label>

@@ -1,6 +1,6 @@
 <?php
     require_once('include/bootstrap.php');
-    $sql = 'SELECT title, content, price, img
+    $sql = 'SELECT id, title, content, price, img
             FROM products';
     $result = db_select($sql);
 ?>
@@ -39,8 +39,8 @@
 			</form>
             <?php foreach($result as $key => $value){ ?>
 			<div id="news_1">
-				<img src="pics/vodopadi.jpg">
-				<a href="product.php"><h1><?php echo $value['title'] ?></h1></a>
+				<img src="storage/product/<?php echo $value['img'] ?>">
+				<a href="product.php?id=<?php echo $value['id']?>"><h1><?php echo $value['title'] ?></h1></a>
 				<p id="price"><?php echo '$'.$value['price'] ?></p>
 				<p><?php echo $value['content'] ?></p>
 			</div>
@@ -58,5 +58,4 @@
 	</footer>
 	</div>
 </body>
-
 </html>

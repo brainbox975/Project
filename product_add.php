@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		if ($_FILES['image']['tmp_name'] != '') {
 			$filename = rand(1, 10000).$_FILES['image']['name'];
-			move_uploaded_file($_FILES['image']['tmp_name'], 'storage/product'.$filename);
+			move_uploaded_file($_FILES['image']['tmp_name'], 'storage/product/'.$filename);
 		} else {
 			$filename = '';
 		}

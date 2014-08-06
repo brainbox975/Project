@@ -1,3 +1,8 @@
+<?php
+require_once('include/bootstrap.php');
+
+$products = products_get($_GET['id']);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,18 +25,14 @@
 	<div id="line"></div>
 		<section class="section">
 			<div id="product">
-					<img src="pics/vodopadi.jpg">
+					<img id="main" src="storage/product/<?php echo $products['img'] ?>">
 				<div id="product_h1">
-					<h1>Plitvice waterfalls</h1>
+					<h1><?= $products['title']?></h1>
 				</div>
-				<p id="product_price">$200</p>	
+				<p id="product_price">$<?php echo $products['price']?></p>
 				<button type="submit" name="buy" id="buy">Buy Now</button>
 				<div id="product_title">
-					<p>
-						The national park was founded in 1949 and is situated in the mountainous karst area of central Croatia, at the border to Bosnia and Herzegovina. The important north-south road connection, which passes through the national park area, connects the Croatian inland with the Adriatic coastal region.
-						The protected area extends over 296.85 square kilometres (73,350 acres). About 90% of this area are part of Lika-Senj County, while the remaining 10% are part of Karlovac County.
-						In 1979, Plitvice Lakes National Park was added to the UNESCO World Heritage register among the first natural sites worldwide. Each year, more than 1,200,000 visitors are recorded. Entrance is subject to variable charges, up to 110 kuna or around $18USD per adult in peak season. Strict regulations apply.
-					</p>
+					<p><?php echo $products['content'] ?></p>
 				</div>
 				<img src="pics/vodopadi.jpg" id="galery">
 				<img src="pics/vodopad1.jpg" id="galery">

@@ -47,10 +47,10 @@
 			<div id="contact_send1">Fill in the fields below to answer your qustion</div>
 				<div id="cont_form">
 				<form action="" method="POST" id="form">
-					Name <input type="text" name="name" id="name" value="">
-					E-mail <input type="text" name="email" id="email" value="">
-					Phone <input type="text" name="phone" id="phone" value="">
-					Message <textarea name="message" id="message"></textarea>
+                    <label for="name">Name</label><input type="text" name="name" id="name" value="">
+                    <label for="email">E-mail</label><input type="text" name="email" id="email" value="">
+                    <label for="phone">Phone</label><input type="text" name="phone" id="phone" value="">
+                    <label for="message">Message</label><textarea name="message" id="message"></textarea>
 					<button type="submit">Send</button>
 				</form>
 				</div>
